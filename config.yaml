@@ -1,0 +1,29 @@
+# config.yaml
+experiment:
+  dataset_name: "cora"
+  num_folds: 10
+  classifiers: {
+    'Logistic Regression': LogisticRegression(max_iter=500),
+    # 'Random Forest': RandomForestClassifier(n_jobs=10)
+    }
+  edge_aggregation_methods : ['hadamard', 'L1', 'L2', 'cosine']
+ 
+
+training_params:
+  embedding_dim: 512
+  learning_rate: 0.01
+  num_epochs: 5000
+  patience: 50 # for early termination
+  num_walks: 10
+  walk_length: 30
+  num_landmarks: 666
+  num_candidate_landmarks: 50
+  workers: 14
+  alpha: 0.0 # for node classification
+  
+
+paths:
+  data: "./data"
+  embeddings: ["./data/cora/cora_landmark_embeddings_542.pkl"]
+  # embeddings: ["./data/cora/cora_landmark_embeddings_136.pkl", "./data/cora/cora_landmark_embeddings_271.pkl", "./data/cora/cora_landmark_embeddings_542.pkl", "./data/cora/cora_landmark_embeddings_813.pkl", "./data/cora/cora_landmark_embeddings_1084.pkl"]
+  output_dir: "./plots"
