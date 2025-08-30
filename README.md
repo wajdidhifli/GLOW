@@ -18,7 +18,7 @@ year = {2025},
 publisher = {ACM},
 address = {Seoul, Republic of Korea},
 doi = {10.1145/3746252.3761351},
-url = {https://doi.org/10.1145/3746252.3761351} } ```
+url = {https://doi.org/10.1145/3746252.3761351} }```
 
 
 ## Key Features
