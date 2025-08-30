@@ -8,7 +8,9 @@ The core idea is to combine:
 The model then optimizes the node embeddings to ensure that their similarity in the embedding space reflects this global, landmark-based structural similarity.
 
 ## Citation
-If you use this code in your research, please cite our paper: + +ACM Reference Format +> Ali Assi, Nour Elislem Karabadji, Mohamed Elati, and Wajdi Dhifli. 2025. Learning Global-Local Multi-Scale Node Embeddings with Random Walks and Landmark-Guided Optimization. In Proceedings of the 34th ACM International Conference on Information and Knowledge Management (CIKM ’25), November 10–14, 2025, Seoul, Republic of Korea. ACM, Seoul, Korea, 10 pages. https://doi.org/10.1145/3746252.3761351 + +BibTeX +```bibtex +@inproceedings{assi2025glow,
+If you use this code in your research, please cite our paper: + +ACM Reference Format +> Ali Assi, Nour Elislem Karabadji, Mohamed Elati, and Wajdi Dhifli. 2025. Learning Global-Local Multi-Scale Node Embeddings with Random Walks and Landmark-Guided Optimization. In Proceedings of the 34th ACM International Conference on Information and Knowledge Management (CIKM ’25), November 10–14, 2025, Seoul, Republic of Korea. ACM, Seoul, Korea, 10 pages. https://doi.org/10.1145/3746252.3761351 
+BibTeX 
+```@inproceedings{assi2025glow,
 author = {Assi, Ali and Karabadji, Nour Elislem and Elati, Mohamed and Dhifli, Wajdi},
 title = {Learning Global-Local Multi-Scale Node Embeddings with Random Walks and Landmark-Guided Optimization},
 booktitle = {Proceedings of the 34th ACM International Conference on Information and Knowledge Management (CIKM '25)},
@@ -16,7 +18,7 @@ year = {2025},
 publisher = {ACM},
 address = {Seoul, Republic of Korea},
 doi = {10.1145/3746252.3761351},
-url = {https://doi.org/10.1145/3746252.3761351} +} +```
+url = {https://doi.org/10.1145/3746252.3761351} } ```
 
 
 ## Key Features
