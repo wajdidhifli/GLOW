@@ -3,8 +3,7 @@ experiment:
   dataset_name: "cora"
   num_folds: 10
   classifiers: {
-    'Logistic Regression': LogisticRegression(max_iter=500),
-    # 'Random Forest': RandomForestClassifier(n_jobs=10)
+    'Logistic Regression': LogisticRegression(max_iter=500)
     }
   edge_aggregation_methods : ['hadamard', 'L1', 'L2', 'cosine']
  

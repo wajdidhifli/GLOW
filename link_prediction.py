@@ -1,6 +1,6 @@
 import pickle
 from tqdm import tqdm
-from load_datasets import get_training_params, load_config, load_torch_to_networkx, remove_small_components,load_ogbl_to_networkx,load_ogbl_train_val_test
+from load_datasets import get_training_params, load_config, load_torch_to_networkx
 import numpy as np
 from sklearn.model_selection import StratifiedKFold
 from sklearn.linear_model import LogisticRegression
@@ -408,12 +408,6 @@ def train_val_test(X, edges, Y, classifiers, sizes=(0.7,0.1,0.2), repeat = 10):
     
     return results_df
 
-def train_val_test_ogbl(X, edges, Y, classifiers):
-    load_ogbl_train_val_test
-
-
-    return results_df
-
 
 if __name__ == "__main__":    
 
@@ -426,10 +420,7 @@ if __name__ == "__main__":
     training_params = get_training_params(config, 'training_params')
 
     print("Loading dataset and embeddings...")
-    if dataset_name.startswith('ogbl'):
-        G = load_ogbl_to_networkx(root=path_params['data'], name=dataset_name)
-    else:
-        G = load_torch_to_networkx(root=path_params['data'], name=dataset_name)
+    G = load_torch_to_networkx(root=path_params['data'], name=dataset_name)
 
     
 
@@ -472,10 +463,7 @@ if __name__ == "__main__":
             edges = full_edge_df[['node1', 'node2']].apply(tuple, axis=1).values
 
 
-            if dataset_name.startswith('ogbl'):
-                results_df = train_val_test_ogbl(X, edges, y, experiment_params['classifiers'])
-            else:
-                results_df = train_val_test(X, edges, y, experiment_params['classifiers'], sizes=(0.85,0.05,0.1), repeat = 10)
+            results_df = train_val_test(X, edges, y, experiment_params['classifiers'], sizes=(0.85,0.05,0.1), repeat = 10)
 
 
             if not file_exists:

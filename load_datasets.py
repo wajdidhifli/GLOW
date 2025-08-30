@@ -4,7 +4,6 @@ import torch_geometric.transforms as T
 import yaml 
 from joblib import Parallel, delayed
 from tqdm import tqdm
-from ogb.linkproppred import LinkPropPredDataset, PygLinkPropPredDataset
 import random
 import math
 
@@ -176,70 +175,6 @@ def load_dgl_to_networkx(root='./data', name="cora"):
     edge_density = nx.density(G_largest)
     print(f"Edge Density: {edge_density}")
     return G, (train_mask, val_mask, test_mask)
-
-def load_ogbl_to_networkx(root='./data/', name='ogbl-collab'):
-
-    dataset = LinkPropPredDataset(name=name, root=root)
-    graph = dataset[0]  
-
-
-    G = nx.Graph()
-
-    num_nodes = graph['num_nodes']
-    G.add_nodes_from(range(num_nodes))
-
-    edges = graph['edge_index'].T  
-    G.add_edges_from(edges.tolist())
-
-    
-
-    connected_components = list(nx.connected_components(G))
-
-
-    num_components = len(connected_components)
-
-    largest_component = max(connected_components, key=len)
-
-    G_largest = G.subgraph(largest_component)
-    print(f'Number of connected components: {num_components}, {len(G_largest.nodes)}')
-    
-    print(f"Number of isolated nodes: {len(list(nx.isolates(G)))}")
-    G.remove_nodes_from(list(nx.isolates(G)))
-
-    V = G.number_of_nodes()
-    E = G.number_of_edges()
-
-    max_edges = V * (V - 1) / 2
-
-    density = E / max_edges
-
-
-    print(f"Number of nodes (V): {V}")
-    print(f"Number of edges (E): {E}")
-    print(f"Maximum possible edges: {max_edges}")
-    print(f"Edge Density: {density}")
-
-
-    if density > 0.5:
-        print("The graph is dense.")
-    else:
-        print("The graph is sparse.")
-    
-
-
-    edge_density = nx.density(G)
-    print(f"Edge Density: {edge_density}")
-
-    return G
-
-def load_ogbl_train_val_test(root='./data/', name='ogbl-collab'):
-
-    dataset = PygLinkPropPredDataset(name = name) 
-
-    split_edge = dataset.get_edge_split()
-    train_edge, valid_edge, test_edge = split_edge["train"], split_edge["valid"], split_edge["test"]
-
-    return train_edge, valid_edge, test_edge
 
 def compute_shortest_path_length(graph, node):
     return nx.single_source_shortest_path_length(graph, node)

@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
-from load_datasets import get_training_params, load_config, load_torch_to_networkx, load_ogbl_to_networkx, remove_small_components
+from load_datasets import get_training_params, load_config, load_torch_to_networkx, remove_small_components
 import random, pickle, math
 from joblib import Parallel, delayed, cpu_count
 from tqdm import tqdm
@@ -524,11 +524,7 @@ def main():
     root = path_params["data"]
 
     print(dataset_name)
-    if dataset_name.startswith("ogbl-"):
-        graph = load_ogbl_to_networkx(root=root, name=dataset_name)
-        dataset_name = dataset_name.replace("ogbl-", "ogbl_")
-    else:
-        graph = load_torch_to_networkx(root=root, name=dataset_name)
+    graph = load_torch_to_networkx(root=root, name=dataset_name)
 
     experiment_params = get_training_params(config, 'training_params')
 

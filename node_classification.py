@@ -6,17 +6,9 @@ import torch_geometric.transforms as T
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, roc_auc_score, precision_score, average_precision_score
 import pandas as pd
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 import numpy as np
-
-from sklearn.neural_network import MLPClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import SVC
-
-from keras.models import Sequential
-from keras.layers import Dense
-from tensorflow.keras.utils import to_categorical
 
 
 def tune_on_validation_(X_train, y_train, X_val, y_val, param_grid):
