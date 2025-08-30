@@ -5,7 +5,19 @@ GLOW is a Python-based graph embedding framework that generates low-dimensional 
 The core idea is to combine:
 1.  **Local Information**: Captured by running random walks and using a Word2Vec model, similar to DeepWalk.
 2.  **Global Information**: Captured by approximating global node positioning by measuring the distance from all nodes to a set of strategically selected "landmark" nodes. 
-The model then optimizes the node embeddings to ensure that their similarity in the embedding space reflects the global, landmark-based structural similarity of the graph.
+The model then optimizes the node embeddings to ensure that their similarity in the embedding space reflects this global, landmark-based structural similarity.
+
+## Citation
+If you use this code in your research, please cite our paper: + +ACM Reference Format +> Ali Assi, Nour Elislem Karabadji, Mohamed Elati, and Wajdi Dhifli. 2025. Learning Global-Local Multi-Scale Node Embeddings with Random Walks and Landmark-Guided Optimization. In Proceedings of the 34th ACM International Conference on Information and Knowledge Management (CIKM ’25), November 10–14, 2025, Seoul, Republic of Korea. ACM, Seoul, Korea, 10 pages. https://doi.org/10.1145/3746252.3761351 + +BibTeX +```bibtex +@inproceedings{assi2025glow,
+author = {Assi, Ali and Karabadji, Nour Elislem and Elati, Mohamed and Dhifli, Wajdi},
+title = {Learning Global-Local Multi-Scale Node Embeddings with Random Walks and Landmark-Guided Optimization},
+booktitle = {Proceedings of the 34th ACM International Conference on Information and Knowledge Management (CIKM '25)},
+year = {2025},
+publisher = {ACM},
+address = {Seoul, Republic of Korea},
+doi = {10.1145/3746252.3761351},
+url = {https://doi.org/10.1145/3746252.3761351} +} +```
+
 
 ## Key Features
 
@@ -39,6 +51,7 @@ numpy
 pandas
 tqdm
 joblib
+PyYAML
 ```
 
 Install with:
